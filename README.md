@@ -316,25 +316,6 @@ const p = new Person(); // Kết quả: 1, 2, 3, ... (tăng mỗi giây)
   - Nó cho phép bạn viết mã bất đồng bộ trông giống như mã đồng bộ, giúp mã trở nên dễ đọc và dễ hiểu hơn.
   - async được đặt trước function, await được đặt trước các lời gọi hàm bất đồng bộ.
 
-### 1.8 Callback
-- Hàm callback là một hàm được truyền vào một hàm khác như một tham số, và sẽ được thực thi sau khi hàm "cha" hoàn thành một tác vụ nào đó. Nói một cách đơn giản, nó là một cách để đảm bảo một đoạn mã được thực thi sau khi một đoạn mã khác hoàn thành.
-- Các đặc điểm của hàm callback:
-  - Truyền như tham số: callback là một hàm được truyền vào hàm khác để thực thi sau khi một điều kiện hoặc tác vụ hoàn tất.
-  - Thực thi bất đồng bộ: thường dùng để xử lý các tác vụ không chặn luồng chính (non-blocking), như truy cập thiết bị (đọc/ghi tập tin), gọi API, hoặc trong các hàm hẹn giờ (timer).
-  - Tính linh hoạt: có thể là hàm ẩn danh (anonymous function), hàm mũi tên (arrow function), hoặc hàm đã được định nghĩa trước (function expression).
-  - "Callback Hell": nếu lồng quá nhiều callback, mã nguồn có thể trở nên khó đọc và bảo trì. Callback hell thường được giải quyết bằng Promise hoặc async/await.
-- Một số tình huống có thể sử dụng hàm Callback:
-  - Xử lý sự kiện (event handling): gắn hàm callback để phản hồi hành động của người dùng (ví dụ: click, hover, submit).
-  - Tác vụ bất đồng bộ: gọi API, đọc/ghi tập tin, hoặc sử dụng trong các hàm hẹn giờ (ví dụ: setTimeout, setInterval).
-  - Xử lý mảng: sử dụng trong các phương thức như forEach, map, filter, reduce.
-  - Hoàn thành tác vụ: đảm bảo một đoạn mã chạy sau khi tác vụ khác hoàn tất (ví dụ: tải dữ liệu từ server rồi hiển thị lên giao diện).
-  - Tùy chỉnh logic: cho phép người dùng truyền logic riêng vào hàm tổng quát.
-- Ví dụ: Trong file HamCallBack.js
-- **Nhược điểm:**
-  - Callback Hell: lồng quá nhiều callback dẫn đến mã khó đọc.
-  - Xử lý lỗi phức tạp: cần kiểm tra lỗi thủ công trong mỗi callback.
-  - Không trực quan: với các luồng phức tạp, khó theo dõi thứ tự thực thi.
-
 ## Chương 2: Git thực hành
 ### 2.1 Hệ thống quản lý phiên bản
 - **Phiên bản(version):** là các bản khác nhau của tập tin, thư mục hoặc toàn bộ mã nguồn dự án (từ đây gọi chung là dự án để tiện trình bày)
@@ -407,16 +388,7 @@ const p = new Person(); // Kết quả: 1, 2, 3, ... (tăng mỗi giây)
   - B1: Di chuyển vào thư mục dự án bằng lệnh cd trong CLI
   - B2: Gõ lệnh git init (Nếu thành công thì sẽ hiện thông báo "initialized empty Git repository in [Path của ban]")
   - B3: Quan sát sự thay đổi của thư mục dự án (Có thêm thư mục .git - Đây chính là kho chứa (kho lưu trữ) mà phần mềm Git thêm tạo ra trong thư mục dự án để sử dụng cho các tác vụ của nó)  
-![image](https://github.com/user-attachments/assets/95418dad-c735-4715-99ef-fcf0d99b97d4)  
 
-### 2.4 Cấu hình định danh người dùng
-#### 2.4.1 Định danh người dùng
-- Trong quá trình phát triển phần mềm, đặc biệt là khi làm việc nhóm, việc theo dõi và quản lý các thay đổi là vô cùng quan trọng.
-- Để đảm bảo tính minh bạch và trách nhiệm, Git yêu cầu mỗi commit (bản ghi thay đổi) đều phải gắn liền với thông tin người thực hiện. Điều này cho phép chúng ta:
-  - Xác định tác giả: dễ dàng biết được ai là người viết hoặc chỉnh sửa một đoạn mã cụ thể.
-  - Theo dõi đóng góp: nắm bắt được lịch sử đóng góp của từng thành viên trong dự án.
-  - Phân công trách nhiệm: quy trách nhiệm cho từng thành viên đối với những thay đổi mà họ thực hiện. Để thực hiện điều này, chúng ta cần tiến hành cấu hình định danh người dùng cho Git. Quá trình này sẽ thiết lập thông tin cá nhân, bao gồm tên và địa chỉ email, được sử dụng để gắn vào các commit. Nhờ đó, mỗi thay đổi trong dự án sẽ được gắn với một cá nhân cụ thể, tạo nên một lịch sử làm việc rõ ràng và dễ theo dõi.
-- Bạn sẽ không thể thực hiện commit nếu chưa thiết lập thông tin cá nhân trong hệ thống Git.
 - **Cấu hình thông tin cá nhân với lệnh git config:**
   - Lệnh git configđược sử dụng để đọc, ghi hoặc cập nhật các thiết lập cấu hình của Git. Git cho phép bạn cấu hình ở ba phạm vi khác nhau: system, global và local, mỗi phạm vi có mức độ ảnh hưởng và ưu tiên riêng.
   - system (phạm vi hệ thống):
@@ -544,36 +516,7 @@ dist/
     - Kho chứa ở xa cho phép nhiều người cùng làm việc trên một dự án và chia sẻ các thay đổi.
     - Có thể sao chép kho chứa ở xa về máy tính của mình bằng lệnh git clone.
 
-#### 2.5.6 Lệnh Git commit
-- git commit là lệnh trong Git, dùng để lưu các thay đổi từ Khu tạm vào Kho chứa, tạo ra một "ảnh chụp" (snapshot) mới trong lịch sử phiên bản. Mỗi commit đi kèm một thông điệp (message) mô tả thay đổi, giúp theo dõi và quản lý mã nguồn hiệu quả.
-- **Vai trò của lệnh git commit**
-  - Ghi nhận thay đổi: lưu vĩnh viễn các tập tin/thay đổi đã được thêm bằng git add.
-  - Tạo lịch sử: mỗi commit là một mốc thời gian, gắn với định danh người dùng (tác giả).
-  - Hỗ trợ cộng tác: giúp nhóm biết ai đã làm gì và khi nào. **Cú pháp cơ bản**
-  - git commit -m "Thông điệp": commit với thông điệp ngắn gọn.
-  - git commit: mở trình soạn thảo để viết thông điệp chi tiết.
-  - git commit -a -m "Thông điệp": tự động thêm các tập tin đã theo dõi (tracked) và commit. **Quy trình làm việc thực tế**
-  - Chỉnh sửa tập tin trong Khu vực làm việc (working directory).
-  - Dùng git add để đưa vào Khu tạm (staging area).
-  - Dùng git commit để lưu vào Kho chứa (repository).
-- **Cách viết thông điệp trong lệnh commit**
-  - Thông điệp commit là phần mô tả ngắn gọn nhưng rõ ràng về thay đổi bạn vừa thực hiện.
-  - Nó được viết khi dùng git commit, giúp bạn và nhóm hiểu mục đích của commit khi xem lại lịch sử.
-- Cách viết theo chuẩn thường dùng [1] Dòng đầu tiên (Subject):
-  - Ngắn gọn (dưới 50 ký tự), mô tả chính xác thay đổi.
-  - Dùng động từ ở dạng mệnh lệnh (imperative), như "Add", "Fix", "Update".
-  - Ví dụ: "Add login feature". [2] Dòng trống (nếu cần chi tiết):
-  - Để cách dòng đầu một dòng trống. [3] Phần mô tả chi tiết (body, tùy chọn):
-  - Giải thích "tại sao" và "cái gì" nếu cần, dài không quá 72 ký tự.
-  - Dùng khi thay đổi phức tạp. [4] Cách nhập thông điệp:
-  - Dùng -m cho thông điệp ngắn: git commit -m "Thông điệp".
-  - Không dùng -m để mở trình soạn thảo (như Vim) viết chi tiết.
-- Ví dụ dùng ```javascript -m với thông điệp ngắn: git commit -m "Initialize Node.js project with Express and Nodemon" ```
-- **Ví dụ dùng thông điệp chi tiết:**
-```javascript
-Fix: resolve issue with user login 
+Express-handlebars là một server-side template engine được tích hợp vào framework Express để tạo ra “HTML động” từ phía server. Express-handlebars dựa trên cú pháp Mustache, cho phép bạn tạo các template với các placeholder ({{variable}}) và các cấu trúc điều khiển như vòng lặp ({{#each}}) hoặc điều kiện ({{#if}}).
 
-This commit addresses a bug where users were unable to log in due to an incorrect password validation. 
-- Modified the password validation logic in `auth.py`. 
-- Added unit tests to verify the fix.
-```
+pnpm i -s express-handlebars
+
